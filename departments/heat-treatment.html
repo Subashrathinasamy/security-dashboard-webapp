@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heat Treatment Department</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      background: #90be6d; /* Heat treatment green */
+      color: #333; /* Dark text for contrast */
+      overflow-x: hidden;
+    }
+
+    /* Home button styling */
+    .home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.25);
+      color: #333;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      z-index: 1000;
+      transition: background 0.3s ease, color 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .home-button:hover {
+      background: rgba(255, 255, 255, 0.5);
+      color: #000;
+    }
+
+    main {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+
+    section {
+      scroll-snap-align: start;
+      height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      padding-bottom: 10px;
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.7);
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 10px;
+    }
+
+    img.department-img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-top: 16px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: rgba(51, 51, 51, 0.15);
+      color: #333;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      width: fit-content;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    .back-button:hover {
+      background: rgba(51, 51, 51, 0.3);
+      color: #90be6d;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+      section {
+        padding: 30px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Home button in top-left -->
+  <a href="../index.php" class="home-button">🏠 Home</a>
+
+  <main>
+    <section>
+      <h1>Heat Treatment Department</h1>
+      <p>The Heat Treatment Department applies controlled heating and cooling to improve metal properties like hardness, strength, and ductility.</p>
+      <img src="https://fractory.com/wp-content/uploads/2020/02/Heat-treatment-of-Metals.jpg" alt="Heat Treatment Department" class="department-img" />
+    </section>
+
+    <section>
+      <h1>Heat Treatment Processes</h1>
+      <p>Common processes include annealing, quenching, tempering, and normalizing. Each method alters the metal's microstructure to achieve desired mechanical properties.</p>
+    </section>
+
+    <section>
+      <h1>Equipment Used</h1>
+      <p>The department uses furnaces, quenching tanks, and temperature control systems to perform precise heat cycles. Automation ensures consistency and quality control.</p>
+    </section>
+
+    <section>
+      <h1>Quality Control and Safety</h1>
+      <p>Strict monitoring of temperatures and timings is critical. Safety protocols are followed to protect workers from heat hazards and ensure safe handling of hot components.</p>
+    </section>
+
+    <section>
+      <h1>Impact on Casting Quality</h1>
+      <p>Heat treatment enhances mechanical properties, reduces residual stresses, and improves wear resistance, directly affecting the durability and performance of cast products.</p>
+      <a href="../departments.html" class="back-button">← Back to Departments</a>
+    </section>
+  </main>
+</body>
+</html>

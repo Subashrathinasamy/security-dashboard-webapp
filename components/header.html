@@ -1,0 +1,85 @@
+<header class="navbar">
+  <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+  <div class="logo">
+    <img src="assets/images/logo.png" alt="Company Logo" />
+  </div>
+  <nav class="top-nav">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="reports.html">Reports</a></li>
+      <li><a href="departments.html">Departments</a></li>
+      <li><a href="guards.html">Security Guards</a></li>
+      <li><a href="settings.html">Settings</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </nav>
+  <div class="navbar-right">
+    <button id="notification-btn" title="Notifications">🔔</button>
+    <button id="user-btn" title="User Profile">👤</button>
+  </div>
+
+  <style>
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background-color: #2c3e50;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      color: white;
+      z-index: 1100;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .navbar .logo img {
+      height: 40px;
+    }
+    .top-nav ul {
+      display: flex;
+      list-style: none;
+      margin-left: 20px;
+      padding: 0;
+    }
+    .top-nav ul li a {
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      border-radius: 4px;
+    }
+    .top-nav ul li a.active,
+    .top-nav ul li a:hover {
+      background-color: #00796b;
+    }
+    .navbar-right {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+    .navbar-right button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      margin-left: 15px;
+      cursor: pointer;
+    }
+    .menu-toggle {
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: white;
+      margin-right: 15px;
+    }
+  </style>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('sidebar-active');
+    });
+  </script>
+</header>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Knockout Department</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      background: #f9c74f; /* Knockout yellow */
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* Home button styling */
+    .home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.25);
+      color: #333;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      z-index: 1000;
+      transition: background 0.3s ease, color 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .home-button:hover {
+      background: rgba(255, 255, 255, 0.5);
+      color: #000;
+    }
+
+    main {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+
+    section {
+      scroll-snap-align: start;
+      height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      padding-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(255,255,255,0.6);
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 10px;
+    }
+
+    img.department-img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      margin-top: 16px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: rgba(51, 51, 51, 0.15);
+      color: #333;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      width: fit-content;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+
+    .back-button:hover {
+      background: rgba(51, 51, 51, 0.3);
+      color: #f9c74f;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+      section {
+        padding: 30px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Home button in top-left -->
+  <a href="../index.php" class="home-button">🏠 Home</a>
+
+  <main>
+    <section>
+      <h1>Knockout Department</h1>
+      <p>The Knockout Department is responsible for breaking the sand moulds to retrieve the solidified castings. This process requires care to avoid damaging the cast parts during separation from the mould.</p>
+      <img src="https://carpenterbrothersinc.com/wp-content/uploads/2021/03/Electric-furnace.png" alt="Knockout Department" class="department-img" />
+    </section>
+
+    <section>
+      <h1>Process Overview</h1>
+      <p>After the casting has cooled and solidified, the moulds are carefully broken using mechanical or manual methods. The leftover sand and core materials are removed to prepare the casting for further finishing operations.</p>
+    </section>
+
+    <section>
+      <h1>Equipment and Tools</h1>
+      <p>The department uses knockout machines, hammers, pneumatic tools, and vibrators to separate castings from the moulds efficiently. Proper handling ensures minimal damage and maintains the integrity of the casting surface.</p>
+    </section>
+
+    <section>
+      <h1>Safety Precautions</h1>
+      <p>Due to the physical nature of the work, strict safety protocols are observed. Workers wear protective gloves, eyewear, and helmets. The workspace is monitored to prevent accidents from flying debris or heavy equipment.</p>
+    </section>
+
+    <section>
+      <h1>Quality Assurance</h1>
+      <p>Once knocked out, castings are inspected for defects or surface irregularities. This department works closely with finishing and quality control teams to ensure that only defect-free castings proceed to the next stage.</p>
+      <a href="../departments.html" class="back-button">← Back to Departments</a>
+    </section>
+  </main>
+</body>
+</html>

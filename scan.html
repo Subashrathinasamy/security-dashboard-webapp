@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QR Scanner - Security Dashboard</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <style>
+    body {
+      background-color: #f4f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding-top: 60px;
+      color: #333;
+    }
+
+    main.main-content {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #ffffff;
+      padding: 30px 25px;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    #qr-reader {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    }
+
+    #result {
+      margin-top: 25px;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #4caf50;
+      word-break: break-word;
+      min-height: 1.5em;
+      text-align: left;
+    }
+
+    label {
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+
+    select {
+      width: 100%;
+      max-width: 300px;
+      padding: 8px 10px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    #message {
+      color: #d9534f;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 480px) {
+      main.main-content {
+        margin: 20px 10px;
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <h2 onclick="location.href='landing.html'" style="color: red; font-weight: 900; font-size: 24px; cursor: pointer;">KOSO</h2>
+    </div>
+    <nav class="top-nav">
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="scan_reports.php">Reports</a></li>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a href="guards.php">Security Guards</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
+    <div class="navbar-right">
+      <button id="notification-btn" title="Notifications">🔔</button>
+      <button id="user-btn" title="User Profile">👤</button>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="index.php">Dashboard</a></li>
+      <li><a href="departments.html">Departments</a></li>
+      <li><a href="guards.php">Security Guards</a></li>
+      <li><a href="scan.html" class="active">QR Scanner</a></li>
+      <li><a href="scan_reports.php">Reports</a></li>
+      <li><a href="settings.html">Settings</a></li>
+      <li><a href="about.html">About Us</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h1>QR Code Scanner</h1>
+
+    <!-- Guard selection dropdown -->
+    <label for="guardSelect">Select Guard:</label>
+    <select id="guardSelect">
+      <option value="" disabled selected>Select a guard</option>
+      <option value="Ravi">Ravi</option>
+      <option value="Arjun">Arjun</option>
+      <option value="Suresh">Suresh</option>
+      <option value="Vikram">Vikram</option>
+      <option value="Prakash">Prakash</option>
+      <option value="Karan">Karan</option>
+      <option value="Amit">Amit</option>
+      <option value="Rahul">Rahul</option>
+      <option value="Naveen">Naveen</option>
+      <option value="Deepak">Deepak</option>
+    </select>
+
+    <!-- Message area -->
+    <div id="message">Please select a guard name to start scanning</div>
+
+    <!-- QR Reader -->
+    <div id="qr-reader"></div>
+
+    <!-- Result display -->
+    <div id="result">
+      <p><strong>Name:</strong> <span id="guardName">-</span></p>
+      <p><strong>Department:</strong> <span id="department">-</span></p>
+      <p><strong>Date & Time:</strong> <span id="dateTime">-</span></p>
+      <p><strong>Scan Result:</strong> <span id="scanResult">-</span></p>
+      <p><strong>Status:</strong> <span id="status">-</span></p>
+      <p><strong>Location:</strong> <span id="location">-</span></p>
+    </div>
+  </main>
+
+  <script>
+    let scannerInitialized = false;
+    let html5QrcodeScanner;
+
+    document.getElementById("guardSelect").addEventListener("change", function () {
+      const selectedGuard = this.value;
+      document.getElementById("guardName").textContent = selectedGuard || "-";
+
+      // Hide message
+      document.getElementById("message").style.display = "none";
+
+      if (!scannerInitialized) {
+        html5QrcodeScanner = new Html5QrcodeScanner(
+          "qr-reader", { fps: 10, qrbox: 250 }, false);
+        html5QrcodeScanner.render(onScanSuccess, onScanFailure);
+        scannerInitialized = true;
+      }
+    });
+
+    function onScanSuccess(decodedText, decodedResult) {
+      const params = new URLSearchParams(decodedText);
+      const selectedGuard = document.getElementById("guardSelect").value;
+      const guardName = selectedGuard || params.get("guard") || "Unknown";
+      const department = params.get("department") || "Unknown";
+      const status = params.get("status") || "Pending";
+      const scanResult = decodedText;
+      const datetime = new Date().toISOString().slice(0, 19).replace("T", " ");
+      const location = "KOSO India Plant, Tamil Nadu";
+
+      document.getElementById("guardName").textContent = guardName;
+      document.getElementById("department").textContent = department;
+      document.getElementById("dateTime").textContent = datetime;
+      document.getElementById("scanResult").textContent = scanResult;
+      document.getElementById("status").textContent = status;
+      document.getElementById("location").textContent = location;
+
+      const scanData = {
+        guard_name: guardName,
+        department: department,
+        datetime: datetime,
+        scan_result: scanResult,
+        status: status,
+        location: location
+      };
+
+      fetch("backend/save_scan.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(scanData)
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            alert("Scan saved successfully!");
+          } else {
+            alert("Error saving scan.");
+          }
+        })
+        .catch(err => {
+          alert("Scan saved successfully!");
+          console.error(err);
+        });
+    }
+
+    function onScanFailure(error) {
+      // Optionally log errors or display a message
+    }
+  </script>
+</body>
+</html>

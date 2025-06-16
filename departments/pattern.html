@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pattern Department</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      background: #f94144; /* Pattern red */
+      color: white;
+      overflow-x: hidden;
+    }
+    main {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+    section {
+      scroll-snap-align: start;
+      height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 12px;
+    }
+    h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      padding-bottom: 8px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+    p {
+      font-size: 1.3rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+    p + p {
+      margin-top: 8px;
+    }
+    ul {
+      padding-left: 20px;
+      margin: 8px 0 0 0;
+      text-align: left;
+      max-width: 600px;
+    }
+    ul li {
+      margin-bottom: 6px;
+    }
+    img.department-img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      margin-top: 16px;
+      object-fit: contain;
+    }
+    .back-button {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      width: fit-content;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      margin-top: 20px;
+    }
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.5);
+      color: #f94144;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    /* Home button top-left fixed */
+    .home-button {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+    .home-button:hover {
+      background: rgba(255, 255, 255, 0.4);
+      color: #f94144;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+      section {
+        padding: 30px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.php" class="home-button">🏠 Home</a>
+  <main>
+    <section>
+      <h1>Pattern Department</h1>
+      <p>The Pattern Department is responsible for creating patterns used to form moulds for casting. These patterns ensure dimensional accuracy and are essential for quality production.</p>
+      <img src="https://badgeralloys.com/wp-content/uploads/2022/06/220222BadgerAlloy_323_rtch_web.jpg" alt="Pattern Department" class="department-img" />
+    </section>
+
+    <section>
+      <h1>Role and Responsibilities</h1>
+      <p>Patterns act as replicas of the final product and are used to create precise cavities in moulding materials. The department designs, manufactures, and maintains these patterns to support efficient production processes.</p>
+      <p>Skilled pattern makers use various materials like wood, metal, or plastic to craft patterns, ensuring durability and accuracy.</p>
+    </section>
+
+    <section>
+      <h1>Types of Patterns</h1>
+      <p>The department creates several types of patterns including:</p>
+      <ul>
+        <li><strong>Solid patterns:</strong> Simple single-piece patterns for straightforward castings.</li>
+        <li><strong>Split patterns:</strong> Made in two halves for complex shapes requiring draft angles.</li>
+        <li><strong>Match plate patterns:</strong> Mounted on a plate for efficient sand moulding in automated processes.</li>
+        <li><strong>Cope and drag patterns:</strong> Used for moulding in multiple parts (top and bottom).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h1>Importance in Foundry</h1>
+      <p>Accurate patterns are vital to the overall casting quality. Imperfect patterns lead to defects, increased scrap, and higher costs. The Pattern Department collaborates closely with design and production teams to ensure pattern precision and timely delivery.</p>
+      <p>The department also performs regular inspections and repairs to maintain pattern integrity.</p>
+    </section>
+
+    <section>
+      <h1>Learn More</h1>
+      <p>For more information about the Pattern Department and its critical role in the steel foundry, please refer to the company manuals or contact the department head.</p>
+      <a href="../departments.html" class="back-button">← Back to Departments</a>
+    </section>
+  </main>
+</body>
+</html>

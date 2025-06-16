@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Moulding Department</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    /* Page background and font */
+    body, html {
+      margin: 0; padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+      background: #f3722c; /* Moulding orange background */
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* Home button styling */
+    .home-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.25);
+      color: white;
+      text-decoration: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      z-index: 1000;
+      transition: background 0.3s ease, color 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .home-button:hover {
+      background: rgba(255, 255, 255, 0.5);
+      color: #f3722c;
+    }
+
+    main {
+      scroll-snap-type: y mandatory;
+      overflow-y: scroll;
+      height: 100vh;
+    }
+
+    section {
+      scroll-snap-align: start;
+      height: 100vh;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      box-sizing: border-box;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin: 0;
+      padding-bottom: 10px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+
+    p {
+      font-size: 1.3rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    p + p {
+      margin-top: 10px;
+    }
+
+    img.department-img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      margin-top: 16px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .back-button {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      width: fit-content;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      margin-top: 20px;
+    }
+
+    .back-button:hover {
+      background: rgba(255, 255, 255, 0.5);
+      color: #f3722c;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1.1rem;
+      }
+      section {
+        padding: 30px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Home button in top-left -->
+  <a href="../index.php" class="home-button">🏠 Home</a>
+
+  <main>
+    <section>
+      <h1>Moulding Department</h1>
+      <p>The Moulding Department plays a crucial role in the casting process by creating precise sand moulds that replicate the pattern’s shape. Using high-quality sand mixed with binders, the moulds are carefully formed to ensure the final castings have the correct dimensions and surface finish. This department is responsible for maintaining the consistency and integrity of the moulds, as any defects or imperfections directly affect the quality of the cast product.</p>
+      <img src="https://www.2mfoundry.com/immagini/555x433-formatura1.jpg" alt="Moulding Department" class="department-img" />
+    </section>
+
+    <section>
+      <h1>Materials and Techniques</h1>
+      <p>The department utilizes various types of sand such as silica sand, green sand, and resin-coated sand, depending on the casting requirements. Skilled moulders use traditional hand molding as well as advanced machine molding techniques to form the sand moulds around the patterns. The process includes careful compaction of sand to avoid voids and ensure structural strength. Techniques like core making are also integrated within this department to create complex internal cavities.</p>
+    </section>
+
+    <section>
+      <h1>Quality Control</h1>
+      <p>Quality control is paramount in the Moulding Department. Every mould is inspected for dimensional accuracy, surface smoothness, and strength before being used in pouring molten metal. The department collaborates closely with pattern makers and foundry engineers to identify and rectify defects such as cracks, shifts, or inclusions. Regular testing of sand properties and equipment calibration help maintain high standards throughout the production cycle.</p>
+    </section>
+
+    <section>
+      <h1>Safety and Environment</h1>
+      <p>Handling sand and binders requires strict adherence to safety protocols to protect workers from dust and chemical exposure. The department ensures proper ventilation and uses personal protective equipment. Additionally, sustainable practices such as sand reclamation and recycling are implemented to minimize waste and environmental impact, aligning with the company's commitment to eco-friendly operations.</p>
+    </section>
+
+    <section>
+      <h1>Collaboration and Innovation</h1>
+      <p>The Moulding Department continuously innovates by adopting new technologies like automated molding lines and 3D sand printing. It works closely with design, pattern, and pouring departments to streamline workflows and improve cast quality. Training and skill development for moulders ensure adaptability to evolving production demands, ultimately contributing to efficient, cost-effective foundry operations.</p>
+      <a href="../departments.html" class="back-button">← Back to Departments</a>
+    </section>
+  </main>
+</body>
+</html>

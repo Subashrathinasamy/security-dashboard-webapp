@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - Security Dashboard</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    /* ======= MODIFIED CSS ======= */
+
+    /* Main content container */
+    main.main-content {
+      margin-left: 260px;
+      margin-top: 60px;
+      margin-right: 20px;
+      margin-bottom: 80px;
+      max-width: none;
+      padding: 40px 35px;
+      background: #f9fcfc;
+      color: #2e3a35;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      min-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    main.main-content h1 {
+      font-weight: 900;
+      margin-bottom: 28px;
+      color: #00695c;
+      text-align: center;
+      font-size: 2.9rem;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+
+    main.main-content p {
+      font-size: 1.18rem;
+      margin-bottom: 30px;
+      color: #3a4a45;
+      text-align: justify;
+      letter-spacing: 0.02em;
+    }
+
+    main.main-content h2 {
+      text-align: center;
+      margin: 52px 0 38px;
+      font-weight: 700;
+      color: #004d40;
+      font-size: 2.3rem;
+      border-bottom: 4px solid #00897b;
+      display: inline-block;
+      padding-bottom: 7px;
+      letter-spacing: 0.07em;
+      font-family: 'Segoe UI Semibold', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Team container */
+    .team {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      padding-bottom: 12px;
+    }
+
+    /* Each team member card */
+    .member {
+      max-width: 230px;
+      background: #ffffffee;
+      border-radius: 18px;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+      padding: 22px 20px 28px;
+      text-align: center;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+      cursor: default;
+    }
+
+    .member:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 22px 40px rgba(0,0,0,0.14);
+    }
+
+    /* Team member image */
+    .member img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 18px;
+      border: 5px solid #00796b;
+      transition: box-shadow 0.28s ease;
+    }
+
+    .member:hover img {
+      box-shadow: 0 0 18px 5px #004d40;
+    }
+
+    /* Team member name */
+    .member h3 {
+      margin: 0;
+      font-weight: 700;
+      color: #00796b;
+      font-size: 1.35rem;
+      letter-spacing: 0.05em;
+      font-family: 'Segoe UI Semibold', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Team member role */
+    .member p {
+      font-size: 1rem;
+      color: #5a6b66;
+      margin-top: 8px;
+      font-style: italic;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Fade in animation */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 700px) {
+      .team {
+        flex-direction: column;
+        align-items: center;
+        gap: 38px;
+      }
+
+      main.main-content {
+        padding: 32px 22px;
+      }
+
+      main.main-content h1 {
+        font-size: 2.4rem;
+      }
+
+      main.main-content h2 {
+        font-size: 2rem;
+      }
+
+      .member {
+        max-width: 280px;
+      }
+    }
+
+    /* Hamburger menu button */
+    .menu-toggle {
+      font-size: 1.9rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      display: none; /* hidden by default */
+      color: #00796b;
+      margin-left: 15px;
+      padding: 6px 11px;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+      color: #004d40;
+    }
+
+    /* Show hamburger on smaller screens */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      /* Hide top nav links initially on mobile */
+      .top-nav ul {
+        display: none;
+        flex-direction: column;
+        background: #fff;
+        position: absolute;
+        top: 60px; /* height of navbar */
+        left: 0;
+        width: 100%;
+        box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+        margin: 0;
+        padding: 12px 0;
+        z-index: 1000;
+      }
+
+      /* Show nav when active */
+      .top-nav.active ul {
+        display: flex;
+      }
+
+      /* Sidebar slide toggle */
+      .sidebar {
+        position: fixed;
+        top: 60px;
+        left: -250px; /* hidden */
+        width: 250px;
+        height: calc(100% - 60px);
+        background-color: #004d40;
+        overflow-y: auto;
+        transition: left 0.3s ease;
+        z-index: 1001;
+      }
+
+      .sidebar.active {
+        left: 0; /* slide in */
+      }
+
+      /* Adjust main content margin when sidebar shown */
+      main.main-content {
+        margin-left: 0;
+        transition: margin-left 0.3s ease;
+      }
+
+      /* Adjust navbar right buttons for mobile */
+      .navbar-right {
+        display: flex;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <h2 onclick="location.href='landing.html'" style="color: red; font-weight: 900; font-size: 24px; cursor: pointer;">KOSO</h2>
+    </div>
+
+    <nav class="top-nav">
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="scan_reports.php">Reports</a></li>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a href="guards.php">Security Guards</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="navbar-right">
+      <button id="notification-btn" title="Notifications">🔔</button>
+      <button id="user-btn" title="User Profile">👤</button>
+    </div>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <ul>
+      <li><a href="index.php">Dashboard</a></li>
+      <li><a href="departments.html">Departments</a></li>
+      <li><a href="guards.php">Security Guards</a></li>
+      <li><a href="scan.html">QR Scanner</a></li>
+      <li><a href="scan_reports.php">Reports</a></li>
+      <li><a href="settings.html">Settings</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+ <main class="main-content">
+  <h1>About Us</h1>
+  <p>Welcome to KOSO India Pvt. Ltd., where innovation meets excellence in delivering trusted security and industrial solutions</p>
+
+  <!-- New Sections Added Here -->
+
+  <h2>Company Overview</h2>
+  <p>
+    Founded in 1990, KOSO India Pvt. Ltd. is headquartered in Mumbai, serving clients across the globe. Our mission is to provide robust and reliable security solutions that protect businesses and their assets with cutting-edge technology.
+  </p>
+
+  <h2>Vision &amp; Mission</h2>
+  <p><strong>Vision:</strong> To be the leading provider of innovative security systems worldwide.</p>
+  <p><strong>Mission:</strong> Deliver exceptional security monitoring services with integrity, efficiency, and customer-centric solutions.</p>
+
+  <h2>Core Values</h2>
+  <p>Integrity, Innovation, Customer First, Excellence, and Collaboration guide every decision we make, ensuring trust and quality in all our services.</p>
+
+  <h2>What We Do / Services</h2>
+  <p>
+    We specialize in cloud-based security dashboards, multi-factor authentication systems, and real-time data monitoring. Our solutions cater to industries such as manufacturing, logistics, and corporate enterprises.
+  </p>
+
+  <h2>Infrastructure &amp; Capabilities</h2>
+  <p>
+    Equipped with state-of-the-art data centers and cutting-edge analytics tools, we leverage proprietary algorithms and secure cloud infrastructure to deliver uninterrupted services.
+  </p>
+
+  <h2>Certifications &amp; Quality Assurance</h2>
+  <p>
+    KOSO India Pvt. Ltd. holds ISO 27001 certification and follows stringent quality control processes to guarantee the highest security standards.
+  </p>
+
+  <h2>Innovation &amp; R&D</h2>
+  <p>
+    We continuously invest in R&D, developing patented security algorithms and collaborating with top technology partners to stay ahead in the industry.
+  </p>
+
+  <h2>Sustainability &amp; CSR</h2>
+  <p>
+    Committed to environmental sustainability, we implement energy-efficient operations and support community programs focused on education and digital literacy.
+  </p>
+
+  <h2>Global Footprint</h2>
+  <p>
+    With offices and service centers in Asia, Europe, and North America, KOSO proudly serves clients in over 70 countries worldwide.
+  </p>
+
+  <!-- Existing Team Section -->
+  <h2>Our Team</h2>
+  <div class="team">
+    <div class="member">
+      <img src="https://tse2.mm.bing.net/th?id=OIP.vXbfO9QJncOG9yJGDxNSUQHaEy&pid=Api&P=0&h=220" alt="Ramesh Kumar" />
+      <h3>Ramesh Kumar</h3>
+      <p>Lead Security Analyst</p>
+    </div>
+    <div class="member">
+      <img src="https://media.vogue.in/wp-content/uploads/2018/08/Indian-origin-astronaut-Sunita-Williams-among-9-astronauts-selected-for-a-NASA-run-commercial-crew-program-developed.jpg" alt="Sunita Sharma" />
+      <h3>Sunita Sharma</h3>
+      <p>Operations Manager</p>
+    </div>
+    <div class="member">
+      <img src="https://tse3.mm.bing.net/th?id=OIP.KdBSw8TPL34eU6T7bjhpAAHaLH&pid=Api&P=0&h=220" alt="Vikram Singh" />
+      <h3>Vikram Singh</h3>
+      <p>Software Engineer</p>
+    </div>
+  </div>
+
+  <h2>Client Testimonials</h2>
+  <p>"KOSO's security dashboard transformed our operations with seamless monitoring and instant alerts." – ABC Manufacturing</p>
+  <p>"Reliable, efficient, and easy to integrate – highly recommend KOSO's solutions." – XYZ Logistics</p>
+
+</main>
+
+   <footer style="
+  background-color: #2c3e50;
+  color: #ffffffcc;
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 0.9rem;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  box-shadow: inset 0 1px 0 #3f5168;
+  font-family: Arial, sans-serif;
+  user-select: none;
+">
+  <p>
+    &copy; 2025 <strong>KOSO India Pvt. Ltd.</strong> All rights reserved.
+  </p>
+  <p style="margin-top: 5px; font-size: 0.8rem; color: #ffffff88;">
+    Designed &amp; Developed with ❤️ by KOSO IT Team
+  </p>
+</footer>
+<script src="assets/js/script.js"></script>
+</body>
+</html>  
